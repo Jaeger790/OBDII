@@ -1,56 +1,57 @@
-import asyncio
+
 import obd
 
 class Engine_Commands:
     #create a constructor
     def __init__(self):
-        self.connection = obd.Async()
-        self.connection.watch(obd.commands.FUEL_LEVEL)
-        self.connection.watch(obd.commands.RPM)
-        self.connection.watch(obd.commands.COOLANT_TEMP)
-        self.connection.watch(obd.commands.SPEED)
-        self.connection.start()
-        self.connection.stop()
-    
-    #create an async connection to get the fuel level in percentage
+        #create a connection to the car using the obd module
+        self.connection = obd.OBD(portstr="COM7")
+        #instantiate the commands class from the obd module
+        self.commands = obd.commands
+
+
+        #create a function that will return the fuel level
     def get_fuel_level(self):
-        self.connection.watch(obd.commands.FUEL_LEVEL)
-        self.connection.start()
-
-        response = self.connection.query(obd.commands.FUEL_LEVEL).value
-        self.connection.stop()
+        response = self.connection.query(self.commands.FUEL_LEVEL)
         return response
-    
-#create an async connection to get the engine RPM
+
+        #create a function that will return the engine rpm
     def get_engine_rpm(self):
-        self.connection.watch(obd.commands.RPM)
-        self.connection.start()
-    
-
-        response = self.connection.query(obd.commands.RPM).value
-        self.connection.stop()
+        response = self.connection.query(self.commands.RPM)
         return response
-        
-    
-#create an async connection to get the coolant temperature
+
+        #create a function that will return the coolant temperature
     def get_coolant_temp(self):
-        self.connection.watch(obd.commands.COOLANT_TEMP)
-        self.connection.start()
-    
-
-        response = self.connection.query(obd.commands.COOLANT_TEMP).value
-        self.connection.stop()
+        response = self.connection.query(self.commands.COOLANT_TEMP)
         return response
-    
-#create an async connection to get the speed
+
+        #create a function that will return the speed
     def get_speed(self):
-        self.connection.watch(obd.commands.SPEED)
-        self.connection.start()
-    
-
-        response = self.connection.query(obd.commands.SPEED).value
-        self.connection.stop()
+        response = self.connection.query(self.commands.SPEED)
         return response
+    
+        
+
+        #create a function that will return the throttle position
+    def get_throttle_position(self):
+        #return the throttle position
+        response = self.connection.query(self.commands.THROTTLE_POS)
+        return response
+
+            
+
+        #create a function that will return the intake air temperature
+    def get_intake_air_temp(self):
+        #return the intake air temperature
+
+        return self.connection.query(self.commands.INTAKE_TEMP)
+
+    #create a function that will return the intake manifold pressure
+    def get_intake_manifold_pressure(self):
+        #return the intake manifold pressure
+        return self.connection.query(self.commands.INTAKE_PRESSURE)
+
+
         
     
 
