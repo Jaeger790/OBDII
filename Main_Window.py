@@ -18,28 +18,35 @@ class Main_Window:
         self.master.geometry("500x500")
         self.master.resizable(False, False)
 
+        #fuel label
         self.fuel_level = tk.Label(self.master, text="Fuel Level: ")
         self.fuel_level.grid(row=0, column=0)
-
+        
+        #rpm label
         self.engine_rpm = tk.Label(self.master, text="Engine RPM: ")
         self.engine_rpm.grid(row=1, column=0)
-
+        
+        #coolant temperature label
         self.coolant_temp = tk.Label(self.master, text="Coolant Temperature: ")
         self.coolant_temp.grid(row=2, column=0)
-
+        
+        #speed label    
         self.speed = tk.Label(self.master, text="Speed: ")
-    
         self.speed.grid(row=3, column=0)
 
+        #fuel data label
         self.fuel_level_data = tk.Label(self.master, text="0")
         self.fuel_level_data.grid(row=0, column=1)
 
+        #rpm data label
         self.engine_rpm_data = tk.Label(self.master, text="0")
         self.engine_rpm_data.grid(row=1, column=1)
-
+        
+        #coolant temperature data label
         self.coolant_temp_data = tk.Label(self.master, text="0")
         self.coolant_temp_data.grid(row=2, column=1)
-
+        
+        #speed data label   
         self.speed_data = tk.Label(self.master, text="0")
         self.speed_data.grid(row=3, column=1)
         
