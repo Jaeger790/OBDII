@@ -5,12 +5,18 @@ import obd
 
 class Main_Window:
     #Constructor
+
+
+
     def __init__(self, master):
         self.master = master
         self.master.title("OBDII")
-        self.master.geometry("500x500")
+        self.master.geometry("1000x1000")
         self.master.resizable(False, False)
         self.commands = Engine_Commands()
+
+
+        
 
         #fuel label
         self.fuel_level = tk.Label(self.master, text="Fuel Level: ")
@@ -69,7 +75,57 @@ class Main_Window:
         self.intake_manifold_pressure_data.grid(row=6, column=1)
         
         #TODO: add data for fuel pressure, barometric pressure, and timing advance
+#create a background container to display the speedometer
         
+        
+        #create a speedometer using a canvas
+        self.canvas = tk.Canvas(self.master, width=800, height=800, background="gray")
+        self.canvas.grid(row=7, column=5, columnspan=4)
+        #center the oval in the canvas
+        self.canvas.create_oval(50, 50, 300, 300, fill="black")
+        #create the speedometer needle
+        self.canvas.create_line(175, 175, 175, 50, fill="red", width=3)
+        #create the speedometer needle center
+        self.canvas.create_oval(170, 170, 180, 180, fill="red")       
+        #create the speedometer needle tip
+        self.canvas.create_oval(170, 50, 180, 60, fill="red")               
+        #create the speedometer labels
+        self.canvas.create_text(175, 25, text="0")
+        self.canvas.create_text(250, 50, text="20")
+        self.canvas.create_text(300, 100, text="40")
+        self.canvas.create_text(325, 175, text="60")
+        self.canvas.create_text(300, 250, text="80")
+        self.canvas.create_text(250, 300, text="100")
+        
+    #create the rpm gauge
+        self.canvas.create_oval(500, 50, 750, 300, fill="black")
+        #create the rpm needle
+        neelde =  self.canvas.create_line(625, 175, 625, 50, fill="red", width=3)
+        #create the rpm needle center
+        self.canvas.create_oval(620, 170, 630, 180, fill="red")
+        #create the rpm needle tip
+        self.canvas.create_oval(620, 50, 630, 60, fill="red")
+        #create the rpm labels
+        self.canvas.create_text(625, 25, text="0")
+        self.canvas.create_text(700, 50, text="500")
+        self.canvas.create_text(750, 100, text="1000")
+        self.canvas.create_text(775, 175, text="1500")
+        self.canvas.create_text(750, 250, text="2000")
+        self.canvas.create_text(700, 300, text="3000")
+        self.canvas.create_text(625, 325, text="3300")
+        self.canvas.create_text(550, 300, text="4000")
+        self.canvas.create_text(500, 250, text="5000") 
+        self.canvas.create_text(475, 175, text="5500")
+        self.canvas.create_text(500, 100, text="6000")
+        self.canvas.create_text(550, 50, text="7000")
+        # #move the rpm needle to match the rpm data from the car
+        # rpm_value = self.commands.get_engine_rpm().magnitude
+        # if rpm_value is not None:
+        #     #match the needle to the correct position on the gaugue 
+        #     self.canvas.move(2, 0, -rpm_value)
+      
+
+
     #update the user interface with the data from the car
     def update_data(self):
         self.fuel_level_data.config(text=self.commands.get_fuel_level())
@@ -79,5 +135,5 @@ class Main_Window:
         self.throttle_position_data.config(text=self.commands.get_throttle_position())
         self.intake_air_temp_data.config(text=self.commands.get_intake_air_temp())
         self.intake_manifold_pressure_data.config(text=self.commands.get_intake_manifold_pressure())
-        self.master.after(1000, self.update_data)
+        self.master.after(300, self.update_data)
         
