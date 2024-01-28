@@ -25,6 +25,7 @@
     <Compile Include="Engine_Commands.py" />
     <Compile Include="main_window.py" />
     <Compile Include="OBDII.py" />
+    <Compile Include="pyqt_gauge.py" />
   </ItemGroup>
   <ItemGroup>
     <Interpreter Include="C:\Users\jaege\Documents\OBDenv\">

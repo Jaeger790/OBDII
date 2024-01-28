@@ -100,7 +100,7 @@ class Main_Window:
     #create the rpm gauge
         self.canvas.create_oval(500, 50, 750, 300, fill="black")
         #create the rpm needle
-        neelde =  self.canvas.create_line(625, 175, 625, 50, fill="red", width=3)
+        needle =  self.canvas.create_line(625, 175, 625, 50, fill="red", width=3)
         #create the rpm needle center
         self.canvas.create_oval(620, 170, 630, 180, fill="red")
         #create the rpm needle tip
@@ -118,11 +118,14 @@ class Main_Window:
         self.canvas.create_text(475, 175, text="5500")
         self.canvas.create_text(500, 100, text="6000")
         self.canvas.create_text(550, 50, text="7000")
-        # #move the rpm needle to match the rpm data from the car
-        # rpm_value = self.commands.get_engine_rpm().magnitude
-        # if rpm_value is not None:
-        #     #match the needle to the correct position on the gaugue 
-        #     self.canvas.move(2, 0, -rpm_value)
+        
+
+
+
+
+
+
+
       
 
 
