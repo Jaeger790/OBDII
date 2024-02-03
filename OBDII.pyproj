@@ -23,9 +23,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Engine_Commands.py" />
-    <Compile Include="main_window.py" />
+    <Compile Include="Fuel_Bar.py" />
+    <Compile Include="Gauge_Window.py" />
     <Compile Include="OBDII.py" />
-    <Compile Include="pyqt_gauge.py" />
+    <Compile Include="RPM_Gauge.py" />
   </ItemGroup>
   <ItemGroup>
     <Interpreter Include="C:\Users\jaege\Documents\OBDenv\">

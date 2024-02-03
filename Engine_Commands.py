@@ -1,8 +1,12 @@
 import obd
 
 class Engine_Commands:
-    #Constructor
     def __init__(self):
+        super().__init__()
+        
+        #Constructor
+        self.fuel_value = 0
+        self.max_fuel = 100
         self.connection = obd.OBD(portstr="COM7")
         self.commands = obd.commands
 
