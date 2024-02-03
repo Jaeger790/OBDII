@@ -23,10 +23,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Engine_Commands.py" />
-    <Compile Include="Fuel_Bar.py" />
-    <Compile Include="Gauge_Window.py" />
+    <Compile Include="UI\DTC_Window.py" />
+    <Compile Include="UI\Fuel_Bar.py" />
+    <Compile Include="UI\Gauge_Window.py" />
     <Compile Include="OBDII.py" />
-    <Compile Include="RPM_Gauge.py" />
+    <Compile Include="UI\RPM_Gauge.py" />
   </ItemGroup>
   <ItemGroup>
     <Interpreter Include="C:\Users\jaege\Documents\OBDenv\">
@@ -38,6 +39,9 @@
       <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
       <Architecture>X64</Architecture>
     </Interpreter>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="UI\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

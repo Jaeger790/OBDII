@@ -51,6 +51,8 @@ class Fuel_Bar(QWidget):
         self.layout.addWidget(self.fuel_level_bg, 0, 0)
         self.layout.addWidget(self.fuel_level_bar, 0, 0)
         self.layout.addWidget(self.fuel_level_label, 0, 0)
+        self.layout.setAlignment(self.fuel_level_label, Qt.AlignCenter)
+
         self.setLayout(self.layout)
 
 
@@ -76,9 +78,10 @@ class Fuel_Bar(QWidget):
             self.fuel_level_width = int((self.fuel_value.magnitude / self.max_fuel) * 500)
             self.fuel_level_bar.setFixedWidth(self.fuel_level_width)
             #update text
-            self.fuel_level_label.setText(str(self.fuel_value.magnitude))
-            self.low_fuel()
-            self.update(self.fuel_value.magnitude)
+            
+            self.fuel_level_label.setText(str(round(self.fuel_value.magnitude,1)))
+            self.low_fuel(self.fuel_value.magnitude)
+            self.update()
         else:
             self.fuel_value = 0
             self.fuel_level_width = int((self.fuel_value / self.max_fuel) * 500)
