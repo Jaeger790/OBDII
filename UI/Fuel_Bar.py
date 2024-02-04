@@ -16,7 +16,7 @@ class Fuel_Bar(QWidget):
         self.max_fuel = 100
         self.timer = QTimer(self)
         self.timer.timeout.connect(self.update_fuel_gauge)
-        self.timer.start(300)
+        self.timer.start(5000) #update fuel gauge every 5 seconds
         self.commands = Engine_Commands()
         self.fuel_bar_font = QFont()
         self.fuel_bar_font.setPixelSize(18)

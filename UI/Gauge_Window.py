@@ -15,22 +15,17 @@ class Gauge_Window(QWidget):
         
 
 
-        #initialize the fuel bar and rpm gauge and add them to the window using a grid layout
+        #initialize the fuel bar and rpm gauge 
         self.fuel_bar = Fuel_Bar()
         self.rpm_gauge = RPMGauge()
-        
-
-        
-        
+        #add fuel bar and rpm gauge to the layout
         self.layout = QGridLayout()
         self.layout.addWidget(self.fuel_bar, 0, 0)
         self.layout.addWidget(self.rpm_gauge, 1, 0)
         self.setLayout(self.layout)
-        
     
         self.show()
         
-
         sys.exit(app.exec_())  
 
 

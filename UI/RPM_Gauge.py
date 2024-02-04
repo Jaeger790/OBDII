@@ -1,9 +1,8 @@
-from PyQt5.QtCore import Qt, QTimer,QRectF, QPoint
-from PyQt5.QtGui import QPainter, QColor, QFont, QPen, QPalette, QBrush
+from PyQt5.QtCore import Qt, QTimer, QRectF
+from PyQt5.QtGui import QPainter, QColor, QFont, QBrush
 from PyQt5.QtWidgets import QApplication, QWidget, QLabel 
-import math, sys
+import sys
 from Engine_Commands import Engine_Commands
-import os
 
 
 class RPMGauge(QWidget):
@@ -25,25 +24,22 @@ class RPMGauge(QWidget):
         font = QFont("Fira Code", 32, QFont.Bold)
         font.setPointSize(32)  # Set the desired font size
         self.rpm_label.setFont(font)
-        self.rpm_label.setStyleSheet("color: white; background-color: rgba(0,0,0,0);")
+        self.rpm_label.setStyleSheet("""
+            color: white; 
+            background-color: rgba(0,0,0,0);
+        """)
         self.rpm_label.setAlignment(Qt.AlignCenter)
         self.rpm_label.setFixedHeight(50)
         self.rpm_label.setFixedWidth(300)
         self.rpm_label.setText(str(self.rpm_value))
         
-        
-
-
-        
     def paintEvent(self, event):
         painter = QPainter(self)
         painter.setRenderHint(QPainter.Antialiasing)
 
-
         #calculate rpm gauge percentage
         fill_percentage = self.rpm_value / self.max_rpm
         fill_width = fill_percentage * self.gauge_width
-
 
         # Draw gauge outline
         gauge_rect = QRectF(0, 0, self.gauge_width, self.gauge_height)
@@ -57,28 +53,18 @@ class RPMGauge(QWidget):
         fill_brush.setStyle(Qt.Dense4Pattern)
         painter.setBrush(fill_brush)
 
-        #debug.  Gives update on fill rect size
-        print(f'fill rect: {fill_rect}') 
-        painter.drawRect(fill_rect)
-
 
     #update the gauge data
     def update_RPM_gauge(self):
 
         # Update RPM value
         rpm_value = self.commands.get_engine_rpm()
-        print(f'rpm value before none check: {rpm_value}')
         if rpm_value is not None :
             self.rpm_value = rpm_value.magnitude
-            
-            print(f"RPM value after none check: {rpm_value.magnitude}")  # Debug print
-
-            #calculate rpm gauge percentage
             self.rpm_label.setText(str(self.rpm_value))
             self.update()
         else:
             self.rpm_value = 0
-            print("No rpm value")  # Debug print
             self.update()
             
         
