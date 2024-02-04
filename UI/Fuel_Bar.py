@@ -27,13 +27,13 @@ class Fuel_Bar(QWidget):
         self.fuel_level_bg = QLabel(self)
         self.fuel_level_bg.setFixedWidth(self.Fuel_Bar_Width)
         self.fuel_level_bg.setFixedHeight(self.Fuel_Bar_Height)
-        self.fuel_level_bg.setStyleSheet("background-color: black; border: 1px solid black;")
+        self.fuel_level_bg.setStyleSheet("background-color: black; border: 1px solid black;border-radius: 25px;")
 
         #fuel bar
         self.fuel_level_bar = QLabel(self)
         self.fuel_level_bar.setFixedWidth(self.Fuel_Bar_Width)
         self.fuel_level_bar.setFixedHeight(self.Fuel_Bar_Height)
-        self.fuel_level_bar.setStyleSheet("background-color: green; border: 1px solid black;")
+        self.fuel_level_bar.setStyleSheet("background-color: green; border: 1px solid blue; border-radius: 25px;")
         
 
         #Create a label to display the fuel level

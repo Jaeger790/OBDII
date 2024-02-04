@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QApplication, QMainWindow, QTabWidget, QGridLayout, QWidget, QVBoxLayout
+from PyQt5.QtWidgets import QApplication, QGridLayout, QWidget, QVBoxLayout
 from UI.Fuel_Bar import Fuel_Bar
 from UI.RPM_Gauge import RPMGauge
 from UI.DTC_Window import DTC_Window
